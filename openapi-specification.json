@@ -1,0 +1,288 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api",
+    "version": "1.0.0",
+    "title": "Api"
+  },
+  "tags": [
+    {
+      "name": "Department",
+      "description": "Department methods"
+    },
+    {
+      "name": "Employee",
+      "description": "Employee methods"
+    }
+  ],
+  "paths": {
+    "/api/v1/departments": {
+      "get": {
+        "tags": [
+          "Department"
+        ],
+        "summary": "Departments list",
+        "parameters": [
+          {
+            "in": "query",
+            "type": "integer",
+            "name": "page",
+            "description": "Page number",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Department list with pagination"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Department"
+        ],
+        "summary": "Add a new department",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "department",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Department data",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created department"
+          }
+        }
+      }
+    },
+    "/api/v1/departments/{id}": {
+      "put": {
+        "tags": [
+          "Department"
+        ],
+        "summary": "Update an existing department",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Department id"
+          },
+          {
+            "in": "body",
+            "name": "department",
+            "schema": {
+              "type": "object",
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Department data",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated department"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Department"
+        ],
+        "summary": "Delete an existing department",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Department id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/api/v1/employees": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Employees list",
+        "parameters": [
+          {
+            "in": "query",
+            "type": "integer",
+            "name": "page",
+            "description": "Page number",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employees list with pagination"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Add a new employee",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "employee",
+            "schema": {
+              "type": "object",
+              "required": [
+                "first_name",
+                "middle_name",
+                "last_name",
+                "salary",
+                "departments"
+              ],
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "middle_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "salary": {
+                  "type": "integer"
+                },
+                "gender": {
+                  "type": "integer"
+                },
+                "departments": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              }
+            },
+            "description": "Employee data",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created employee"
+          }
+        }
+      }
+    },
+    "/api/v1/employees/{id}": {
+      "put": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Update an existing employee",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Employee id"
+          },
+          {
+            "in": "body",
+            "name": "employee",
+            "schema": {
+              "type": "object",
+              "required": [
+                "first_name",
+                "middle_name",
+                "last_name",
+                "salary",
+                "departments"
+              ],
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "middle_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "salary": {
+                  "type": "integer"
+                },
+                "gender": {
+                  "type": "integer"
+                },
+                "departments": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                }
+              }
+            },
+            "description": "Employee data",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated employee"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Delete an existing employee",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Employee id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    }
+  }
+}
